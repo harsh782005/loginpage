@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment"
+    android:id="@+id/FirstFragment"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enteryourmail"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:background="#8A9BF8"
+        android:layout_marginTop="40dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enteryourmail"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionDone"
+        android:id="@+id/etEmail"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/getotp"
+        android:id="@+id/etbtn1"
+        android:layout_gravity="center"
+        android:layout_marginTop="400dp"/>
+</LinearLayout>

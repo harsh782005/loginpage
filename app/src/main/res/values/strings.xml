@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">loginpage</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enteryourmail">Enter Your Mail to Get OTP</string>
+    <string name="getotp">Get OTP</string>
+    <string name="please">Please Enter The OTP Required At</string>
+    <string name="mail">mail</string>
+    <string name="verify">Verify</string>
+    <string name="congrats">Congratlation \nYour E mail is verified.</string>
+    <string name="oopssorry">"Oops!Sorry "</string>
+    <string name="reenter">Re-enter Your Password</string>
+    <string name="pass">Password</string>
+    <string name="moveto1">Move to First Page</string>
+</resources>
