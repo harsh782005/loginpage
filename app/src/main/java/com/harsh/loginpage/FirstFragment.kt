@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.harsh.loginpage.databinding.FragmentFirstBinding
+import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,15 +59,21 @@ binding =FragmentFirstBinding.inflate(layoutInflater)
                 binding?.etEmail?.error = "enter valid email"
             }
             else{
+                val number1 = Random.nextInt(0,9)
+                val number2 = Random.nextInt(0,9)
+                val number3 = Random.nextInt(0,9)
+                val number4 = Random.nextInt(0,9)
                 val bundle = Bundle()
                 bundle.putString("email",binding?.etEmail?.text?.toString())
+                bundle.putString("otp","$number1$number2$number3$number4")
                 findNavController().navigate(R.id.action_firstFragment_to_secondFragment2,bundle)
                 try{
                     var intent= Intent(Intent.ACTION_SEND)
                     intent.setType("text/email")
+                    intent.putExtra(Intent.EXTRA_TEXT,"your otp is $number1$number2$number3$number4")
                     startActivity(intent)
                 }catch (exception:Exception){
-
+                Toast.makeText(requireContext(),"this is toast",Toast.LENGTH_LONG).show()
                 }
 
             }

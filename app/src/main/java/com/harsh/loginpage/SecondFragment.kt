@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.harsh.loginpage.databinding.FragmentSecondBinding
@@ -24,16 +25,18 @@ class SecondFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-var binding : FragmentSecondBinding ?=null
+    var binding: FragmentSecondBinding? = null
     var mainActivity: MainActivity? = null
-    var email =""
+    var email = ""
+    var otp = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivity = activity as MainActivity
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-            email = it.getString("email")?:""
+            email = it.getString("email") ?: ""
+            otp = it.getString("otp") ?: ""
         }
     }
 
@@ -42,15 +45,15 @@ var binding : FragmentSecondBinding ?=null
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-binding = FragmentSecondBinding.inflate(layoutInflater)
+        binding = FragmentSecondBinding.inflate(layoutInflater)
         return binding?.root
         // Inflate the layout for this fragment
-      //  return inflater.inflate(R.layout.fragment_second, container, false)
+        //  return inflater.inflate(R.layout.fragment_second, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-binding?.tvEmail?.setText(email)
+        binding?.tvEmail?.setText(email)
         binding?.et1?.doOnTextChanged { text, start, before, count ->
             var otp = binding?.et1?.text?.toString() ?: ""
             if (otp.length == 1) {
@@ -60,27 +63,47 @@ binding?.tvEmail?.setText(email)
         }
         binding?.et1?.onEditorAction(0)
         binding?.et2?.doOnTextChanged { _, _, _, _ ->
-            var otp = binding?.et2?.text?.toString() ?:""
+            var otp = binding?.et2?.text?.toString() ?: ""
             if (otp.length == 1) {
                 binding?.et3?.requestFocus()
             }
-            else{
+
+        }
+        binding?.et3?.doOnTextChanged { _, _, _, _ ->
+            var otp = binding?.et3?.text?.toString() ?: ""
+            if (otp.length == 1) {
+                binding?.et4?.requestFocus()
+            }
+        }
+        binding?.et2?.doAfterTextChanged {
+            var otp = binding?.et2?.text?.toString() ?: ""
+            if (otp.length == 0) {
+                binding?.et1?.requestFocus()
+            }
+        }
+        binding?.et3?.doAfterTextChanged {
+            var otp = binding?.et3?.text?.toString() ?: ""
+            if (otp.length == 0) {
                 binding?.et2?.requestFocus()
             }
         }
-        binding?.et3?.doOnTextChanged { _, _, _, _ ->
-            var otp = binding?.et3?.text?.toString() ?:""
-            if (otp.length == 1) {
-                binding?.et4?.requestFocus()
-            } else{
+        binding?.et4?.doAfterTextChanged {
+            var otp = binding?.et4?.text?.toString() ?: ""
+            if (otp.length == 0) {
                 binding?.et3?.requestFocus()
             }
         }
+
         binding?.btn2?.setOnClickListener {
+            var number =
+                "${binding?.et1?.text?.toString()}${binding?.et2?.text?.toString()}${binding?.et3?.text?.toString()}${binding?.et4?.text?.toString()}"
             var bundle = Bundle()
-            bundle.putString("email",binding?.tvEmail?.text?.toString())
-            findNavController().navigate(R.id.action_secondFragment_to_thirdFragment,bundle)
-    }}
+            bundle.putString("email", binding?.tvEmail?.text?.toString())
+            findNavController().navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
+
+        }
+
+    }
 
 
     companion object {
