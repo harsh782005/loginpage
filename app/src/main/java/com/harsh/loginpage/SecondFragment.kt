@@ -55,7 +55,7 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.tvEmail?.setText(email)
-        binding?.et1?.doOnTextChanged { text, start, before, count ->
+        binding?.et1?.doOnTextChanged { _, _, _, _ ->
             var otp = binding?.et1?.text?.toString() ?: ""
             if (otp.length == 1) {
                 binding?.et2?.requestFocus()

@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController!!, appBarConfiguration!!)
         navController?.addOnDestinationChangedListener { navController, destination, arguments ->
             when (destination.id) {
-                R.id.FirstFragment -> supportActionBar?.title =
+                R.id.firstFragment -> supportActionBar?.title =
                     resources.getString(R.string.login_page)
 
-                R.id.SecondFragment -> supportActionBar?.title = resources.getString(R.string.otp_page)
-                R.id.ThirdFragment -> supportActionBar?.title =
+                R.id.secondFragment -> supportActionBar?.title = resources.getString(R.string.otp_page)
+                R.id.thirdFragment -> supportActionBar?.title =
                     resources.getString(R.string.password_page)
             }
         }
