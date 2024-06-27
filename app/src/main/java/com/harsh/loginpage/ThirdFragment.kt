@@ -22,16 +22,15 @@ class ThirdFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-var binding :FragmentThirdBinding  ?= null
-    var mainActivity :MainActivity ?= null
-    var email =""
+    var binding: FragmentThirdBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-            mainActivity = activity as MainActivity
-            email = it.getString("email")?:""
+
+
         }
     }
 
@@ -40,18 +39,21 @@ var binding :FragmentThirdBinding  ?= null
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentThirdBinding.inflate(layoutInflater)
-        return  binding?.root
+        return binding?.root
         // Inflate the layout for this fragment
-       // return inflater.inflate(R.layout.fragment_third, container, false)
+        // return inflater.inflate(R.layout.fragment_third, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.tvvmail?.setText(email)
-        binding?.tvvmail?.setOnClickListener {
-            findNavController().navigate(R.id.action_thirdFragment_to_firstFragment)
+
+        binding?.btnSubmit?.setOnClickListener {
+            if (binding?.etPassword?.text?.toString().isNullOrEmpty()) {
+                binding?.etPassword?.error = resources.getString(R.string.enter_your_password)
+            }
         }
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

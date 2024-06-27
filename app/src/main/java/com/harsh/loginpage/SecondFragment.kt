@@ -1,5 +1,6 @@
 package com.harsh.loginpage
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -97,12 +98,19 @@ class SecondFragment : Fragment() {
         binding?.btn2?.setOnClickListener {
             var number =
                 "${binding?.et1?.text?.toString()}${binding?.et2?.text?.toString()}${binding?.et3?.text?.toString()}${binding?.et4?.text?.toString()}"
-            var bundle = Bundle()
-            bundle.putString("email", binding?.tvEmail?.text?.toString())
-            findNavController().navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
-
+            if (otp == number) {
+                Dialog(requireContext()).apply {
+                    setContentView(R.layout.first)
+                    show()
+                }
+                findNavController().navigate(R.id.action_secondFragment_to_thirdFragment)
+            } else {
+                Dialog(requireContext()).apply {
+                    setContentView(R.layout.second)
+                    show()
+                }
+            }
         }
-
     }
 
 

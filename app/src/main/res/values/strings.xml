@@ -12,4 +12,9 @@
     <string name="reenter">Re-enter Your Password</string>
     <string name="pass">Password</string>
     <string name="moveto1">Move to First Page</string>
+    <string name="login_page">login page</string>
+    <string name="otp_page">otp page</string>
+    <string name="password_page">Password page</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="submit">Submit</string>
 </resources>
