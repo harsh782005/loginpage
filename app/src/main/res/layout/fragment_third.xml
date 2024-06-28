@@ -19,9 +19,25 @@
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
         android:layout_gravity="center"
         android:hint="@string/enter_your_password"
         android:textSize="@dimen/sp_20" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reenter"
+        android:layout_marginTop="80dp"
+        android:background="#EDAEC4"
+        android:layout_gravity="center"
+        android:textSize="@dimen/sp_20"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reenter"
+        android:id="@+id/reenter"
+        android:layout_marginTop="30sp"
+        android:textAlignment="center"/>
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"

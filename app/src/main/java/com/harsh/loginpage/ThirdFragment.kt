@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.harsh.loginpage.databinding.FragmentThirdBinding
 
@@ -48,10 +49,17 @@ class ThirdFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.btnSubmit?.setOnClickListener {
-            if (binding?.etPassword?.text?.toString().isNullOrEmpty()) {
-                binding?.etPassword?.error = resources.getString(R.string.enter_your_password)
+            if (binding?.etPassword?.text?.toString()?.equals(binding?.reenter?.text?.toString())==true){
+                Toast.makeText(requireContext(),
+                    "password changed",
+                    Toast.LENGTH_LONG).show()
+                }
+            else{
+                Toast.makeText(requireContext(),
+                    "password incorrect",
+                    Toast.LENGTH_LONG).show()
             }
-        }
+                }
     }
 
     companion object {
